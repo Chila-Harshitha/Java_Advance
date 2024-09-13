@@ -1,0 +1,72 @@
+import java.util.*;
+class Node
+{
+    int data;
+    Node next;
+    Node(int x)
+    {
+        data=x;
+        next=null;
+    }
+}
+class SingleList
+{
+    Node head,tail;
+    SingleList()
+    {
+        head=tail=null;
+    }
+    void create(int x)
+    {
+        Node n=new Node(x);
+        if(head==null)
+        {
+            head=tail=n;
+            return;
+        }
+        tail.next=n;
+        tail=n;
+    }
+    void search(int key)
+    {
+        Node temp=head;
+        while(temp!=null)
+        {
+            if(temp.data==key)
+            {
+                System.out.println(1);
+                break;
+            }
+            temp=temp.next;
+        }
+        if(temp==null)
+        System.out.println(-1);
+    }
+}
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        // Write your code 
+        Scanner s=new Scanner(System.in);
+        SingleList k=new SingleList();
+        for(;;)
+        {
+            int x=s.nextInt();
+            if(x==-1)
+                break;
+            k.create(x);
+        }
+        int key=s.nextInt();
+        k.search(key);
+    }
+}
+=================================================================================================================================================
+i/p:
+1
+2
+3
+4
+-1
+3
+o/p:
+1
+if not AVAILable print -1
