@@ -1,0 +1,68 @@
+import java.util.*;
+class Node
+{
+    int data;
+    Node next;
+    Node(int x)
+    {
+        data=x;
+        next=null;
+    }
+}
+class SingleList
+{
+    Node head,tail;
+    SingleList()
+    {
+        head=tail=null;
+    }
+    void create(int x)
+    {
+        Node n=new Node(x);
+        if(head==null)
+        {
+            head=tail=n;
+            return;
+        }
+        tail.next=n;
+        tail=n;
+    }
+    void findMax()
+    {
+        int max=0;
+        Node temp=head;
+        while(temp!=null)
+        {
+            if(temp.data>max)
+            max=temp.data;
+            temp=temp.next;
+        }
+        System.out.println(max);
+    }
+}
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        // Write your code here
+        Scanner s=new Scanner(System.in);
+        SingleList k=new SingleList();
+        for(;;)
+        {
+            int x=s.nextInt();
+            if(x==-1)
+            break;
+            k.create(x);
+        }
+        k.findMax();
+    }
+}
+============================================================================================================================
+i/p:
+1
+4
+5
+8
+3
+2
+-1
+o/p:
+8
