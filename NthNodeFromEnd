@@ -1,0 +1,71 @@
+import java.util.*;
+class Node
+{
+    int data;
+    Node next;
+    Node(int x)
+    {
+        data=x;
+        next=null;
+    }
+}
+class SingleList
+{
+    Node head,tail;
+    SingleList()
+    {
+        head=tail=null;
+    }
+    void create(int x)
+    {
+        Node n=new Node(x);
+        if(head==null)
+        {
+            head=tail=n;
+            return;
+        }
+        tail.next=n;
+        tail=n;
+    }
+    void findNnode(int n)
+    {
+        int count=0;
+        Node temp=head;
+        while(temp!=null)
+        {
+            count++;
+            temp=temp.next;
+        }
+        if(count<n)
+        {
+            System.out.print(-1);
+        }
+        else
+        {
+        count=count-n+1;
+        temp=head;
+        while(count!=1)
+        {
+            temp=temp.next;
+            count--;
+        }
+        System.out.print(temp.data);
+        }
+    }
+}
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        // Write your code here
+        Scanner s=new Scanner(System.in);
+        SingleList k=new SingleList();
+        for(;;)
+        {
+            int x=s.nextInt();
+            if(x==-1)
+            break;
+            k.create(x);
+        }
+        int n=s.nextInt();
+        k.findNnode(n);
+    }
+}
