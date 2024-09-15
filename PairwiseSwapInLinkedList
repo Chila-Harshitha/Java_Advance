@@ -1,0 +1,78 @@
+import java.util.*;
+class Node
+{
+    int data;
+    Node next;
+    Node(int x)
+    {
+        data=x;
+        next=null;
+    }
+}
+class SingleList
+{
+    Node head,tail;
+    SingleList()
+    {
+        head=tail=null;
+    }
+    void create(int x)
+    {
+        Node n=new Node(x);
+        if(head==null)
+        {
+            head=tail=n;
+            return;
+        }
+        tail.next=n;
+        tail=n;
+    }
+    void swapPair()
+    {
+        Node temp1=head;
+        while(temp1!=null&&temp1.next!=null)
+        {
+            int t=temp1.data;
+            temp1.data=temp1.next.data;
+            temp1.next.data=t;
+            temp1=temp1.next.next;
+        }
+        Node temp=head;
+        while(temp!=null)
+        {
+            System.out.println(temp.data);
+            temp=temp.next;
+        }
+    }
+}
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        // Write your code here
+        Scanner s=new Scanner(System.in);
+        SingleList k=new SingleList();
+        for(;;)
+        {
+            int x=s.nextInt();
+            if(x==-1)
+            break;
+            k.create(x);
+        }
+        k.swapPair();
+    }
+}
+===========================================================================================================================
+i/p:
+1
+2
+3
+4
+5
+6
+-1
+o/p:
+2
+1
+4
+3
+6
+5
