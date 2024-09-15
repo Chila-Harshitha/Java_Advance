@@ -1,0 +1,111 @@
+import java.util.*;
+class Node
+{
+    int data;
+    Node next;
+    Node(int x)
+    {
+        data=x;
+        next=null;
+    }
+}
+class SingleList
+{
+    Node head,tail;
+    SingleList()
+    {
+        head=tail=null;
+    }
+    void create(int x)
+    {
+        Node n=new Node(x);
+        if(head==null)
+        {
+            head=tail=n;
+            return;
+        }
+        tail.next=n;
+        tail=n;
+    }
+    void display()
+    {
+        Node temp=head;
+        System.out.println("Linked list before removal of duplicates");
+        while(temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println();
+        temp=head;
+        Node temp1;
+        while(temp!=null)
+        {
+            temp1=temp;
+            while(temp1.next!=null)
+            {
+                if(temp1.next.data==temp.data)
+                {
+                 temp1.next=temp1.next.next;
+                }
+                else
+                temp1=temp1.next;
+            }
+            temp=temp.next;
+        }
+        temp=head;
+        System.out.println("Linked list after removal of duplicates");
+        while(temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+}
+
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        /* Sample code to perform I/O:
+         * Use either of these methods for input
+
+        //BufferedReader
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String name = br.readLine();                // Reading input from STDIN
+        System.out.println("Hi, " + name + ".");    // Writing output to STDOUT
+
+        //Scanner
+        Scanner s = new Scanner(System.in);
+        String name = s.nextLine();                 // Reading input from STDIN
+        System.out.println("Hi, " + name + ".");    // Writing output to STDOUT
+
+        */
+
+        // Write your code here
+        Scanner s=new Scanner(System.in);
+        SingleList l=new SingleList();
+        for(;;)
+        {
+            int x=s.nextInt();
+            if(x==-1)
+            break;
+            l.create(x);
+        }
+        l.display();
+        
+
+    }
+}
+=================================================================================================================
+i/p:
+1
+2
+3
+4
+2
+3
+-1
+o/p:
+Linkedlist before removal of duplicates
+1 2 3 4 2 3
+Linkedlist before removal of duplicates
+1 2 3 4
