@@ -1,0 +1,67 @@
+
+import java.util.*;
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        // Write your code here
+        Scanner s=new Scanner(System.in);
+        int n1=s.nextInt();
+        Stack st1=new Stack();
+        for(int i=0;i<n1;i++)
+        {
+            Integer x=s.nextInt();
+            st1.push(x);
+        }
+        int n2=s.nextInt();
+        Stack st2=new Stack();
+        for(int i=0;i<n2;i++)
+        {
+            Integer x=s.nextInt();
+            st2.add(x);
+        }
+        int pop1=s.nextInt();
+        int pop2=s.nextInt();
+        System.out.println("Stack 1 Elements:");
+        for(int i=n1-1;i>=0;i--)
+        {
+            System.out.print(st1.get(i)+" ");
+        }
+        System.out.println("\nStack 2 Elements:");
+        for(int i=n2-1;i>=0;i--)
+        {
+            System.out.print(st2.get(i)+" ");
+        }
+        System.out.println();
+        for(Integer i=0;i<pop1;i++)
+        {
+            if(st1.empty())
+            {
+            System.out.println("Stack underflow. pop from stack 1 failed");
+            break;
+            }
+            else
+            st1.pop();
+        }
+        System.out.println("Stack 1 Elements:");
+        for(int i=st1.size()-1;i>=0;i--)
+        {
+            System.out.print(st1.get(i)+" ");
+        }
+        System.out.println();
+        for(Integer i=0;i<pop2;i++)
+        {
+            if(st2.empty())
+            {
+            System.out.println("Stack underflow. pop from stack 2 failed");
+            break;
+            }
+            else
+            st2.pop();
+        }
+        System.out.println("Stack 2 Elements:");
+        for(int i=st2.size()-1;i>=0;i--)
+        {
+            System.out.print(st2.get(i)+" ");
+        }
+        System.out.println();
+    }
+}
