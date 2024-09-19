@@ -1,0 +1,53 @@
+/*Given a string of balanced expressions, find if it contains a redundant parenthesis or not. A set of parenthesis is redundant if the same sub-expression is surrounded by unnecessary or multiple brackets. Print ‘Yes‘ if redundant, else ‘No‘.
+
+Note: Expression may contain ‘+‘, ‘*‘, ‘–‘ and ‘/‘ operators. Given expression is valid and there are no white spaces present.
+
+Examples: 
+
+Input: str = “((a+b))”
+Output: YES
+Explanation: ((a+b)) can reduced to (a+b), this Redundant
+
+Input: str = “(a+(b)/c)”
+Output: YES
+Explanation: (a+(b)/c) can reduced to (a+b/c) because b is surrounded by () which is redundant.*/
+import java.util.*;
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        // Write your code here
+        Scanner s=new Scanner(System.in);
+        String str=s.next();
+        boolean f=false;
+        Stack<Character> st=new Stack<Character>();
+        for(int i=0;i<str.length();i++)
+        {
+            char ch=str.charAt(i);
+            if(ch=='('||ch=='-'||ch=='/'||ch=='*'||ch=='+')
+            {
+                st.push(ch);
+            }
+            else if(ch==')')
+            {
+                char top=st.pop();
+                if(top=='(')
+                {
+                    f=true;
+                    break;
+                }
+                else
+                {
+                while(top!='(')
+                {
+                    if(top=='-'||top=='/'||top=='*'||top=='+')
+                        f=false;
+                top=st.pop();
+                }
+                }
+            }
+        }
+        if(f==true)
+            System.out.println("Yes");
+        else
+        System.out.println("No");
+    }
+}
